@@ -16,11 +16,11 @@ jobs:
       - name: Install build dependencies
         run: sudo apt install -y build-essential cmake ninja-build bash
       - name: Build Clang
-        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
         working-directory: llvm
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release        
       - name: Install Clang
-        run: ninja install
-        working-directory: build
+        working-directory: llmv/build
+        run: ninja install        
       - name: Upload Clang binary
         uses: actions/upload-artifact@v3
         with:
