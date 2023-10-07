@@ -8,11 +8,25 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - name: Install build dependencies
+        run: sudo apt install -y build-essential cmake ninja-build bash
       - name: Clone LLVM
-        run: git clone --depth 1 https://github.com/llvm/llvm-project.git llvm
-      - name: Build Clang
+        uses: actions/checkout@v3
+        with:
+          repository: llvm/llvm-project
+          path: llvm
+      - name: Building Clang
         working-directory: llvm
-        run: ls -la
+        run: cmake -DLLVM_ENABLE_PROJECTS="clang" -DCMAKE_BUILD_TYPE="RelWithDebInfo" -S llvm -B build -G Ninja
+      - name: Install Clang
+        working-directory: llmv/build
+        run: ninja install
+      - name: Upload Clang binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: clang-binary
+          path: build/bin/clang
+
 
 
 
