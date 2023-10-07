@@ -15,9 +15,12 @@ jobs:
         with:
           repository: llvm/llvm-project
           path: llvm
-      - name: Building Clang
+      - name: Setting Clang
         working-directory: llvm
         run: cmake -DLLVM_ENABLE_PROJECTS="clang" -DCMAKE_BUILD_TYPE="RelWithDebInfo" -S llvm -B build -G Ninja
+      - name: Building Clang
+        working-directory: llvm
+        run: cmake --build build
       - name: Install Clang
         working-directory: llmv/build
         run: ninja install
@@ -26,6 +29,7 @@ jobs:
         with:
           name: clang-binary
           path: build/bin/clang
+
 
 
 
