@@ -17,7 +17,7 @@ jobs:
         run: sudo apt install -y build-essential cmake ninja-build bash
       - name: Build Clang
         run: cmake -S llvm/clang -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-        working-directory: build
+        working-directory: llvm
       - name: Install Clang
         run: ninja install
         working-directory: build
