@@ -1,4 +1,4 @@
-name: Build Emacs Binary
+name: Build clang Binary
 
 on:
   workflow_dispatch:  # Allow manual triggering
