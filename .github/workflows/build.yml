@@ -13,19 +13,10 @@ jobs:
         with:
           repository: llvm/llvm-project
           path: llvm
-      - name: Install build dependencies
-        run: sudo apt install -y build-essential cmake ninja-build bash
       - name: Build Clang
         working-directory: llvm
-        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release        
-      - name: Install Clang
-        working-directory: llmv/build
-        run: ninja install        
-      - name: Upload Clang binary
-        uses: actions/upload-artifact@v3
-        with:
-          name: clang-binary
-          path: build/bin/clang
+        run: ls -la
+
 
 
 
