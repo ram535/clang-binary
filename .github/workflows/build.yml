@@ -7,9 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v4   
+      - uses: actions/checkout@v4
       - name: Install build dependencies
-        run: sudo apt install -y ninja-build bash
+        run: sudo apt install -y build-essential cmake ninja-build bash
 
       - name: Clone LLVM
         uses: actions/checkout@v3
@@ -19,7 +19,9 @@ jobs:
       - name: Setting Clang
         working-directory: llvm
         run: |
-          cmake -DLLVM_ENABLE_PROJECTS="clang" \
+          cmake \
+          -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
+          -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
           -DCMAKE_BUILD_TYPE="Release" \
           -DCMAKE_INSTALL_PREFIX="$GITHUB_WORKSPACE/clang" \
           -DLLVM_PARALLEL_LINK_JOBS=2 \
@@ -35,6 +37,7 @@ jobs:
         with:
           name: clang-binary
           path: ${{ github.workspace }}/clang
+
 
 
 
