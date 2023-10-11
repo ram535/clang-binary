@@ -28,7 +28,7 @@ jobs:
         working-directory: llvm
         run: cmake --build build
       - name: Install Clang
-        working-directory: llmv/build
+        working-directory: llvm/build
         run: ninja install
       - name: Upload Clang binary
         uses: actions/upload-artifact@v3
