@@ -20,7 +20,7 @@ jobs:
         working-directory: llvm
         run: |
           cmake \
-          -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
+          -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld" \
           -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
           -DLLVM_RUNTIME_TARGETS="x86_64-linux-gnu" \
           -DCMAKE_BUILD_TYPE="Release" \
