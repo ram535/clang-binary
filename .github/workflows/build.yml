@@ -22,6 +22,7 @@ jobs:
           cmake \
           -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
           -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
+          -DLLVM_RUNTIME_TARGETS="x86_64-linux-gnu" \
           -DCMAKE_BUILD_TYPE="Release" \
           -DCMAKE_INSTALL_PREFIX="$GITHUB_WORKSPACE/clang" \
           -DLLVM_PARALLEL_LINK_JOBS=2 \
